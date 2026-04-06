@@ -51,3 +51,7 @@ button {
   font-size: 20px;
   cursor: pointer;
 }
+
+#configBox {
+  margin-top: 10px;
+}
