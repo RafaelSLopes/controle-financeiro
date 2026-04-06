@@ -46,12 +46,22 @@ async function salvar() {
   await fetch(API_URL, {
     method: "POST",
     headers: {
-      "Content-Type": "text/plain;charset=utf-8"
-  },
+      "Content-Type": "application/json"
+    },
     body: JSON.stringify(dados)
   });
 
   alert("Salvo com sucesso!");
+
+  // 🧹 LIMPAR CAMPOS
+  document.getElementById("descricao").value = "";
+  document.getElementById("valor").value = "";
+  document.getElementById("parcelas").value = "";
+
+  // Resetar tipo para "à vista"
+  document.querySelector('input[value="avista"]').checked = true;
+  document.getElementById("parcelasDiv").style.display = "none";
+  document.getElementById("descricao").focus();
 }
 
 // ==========================
