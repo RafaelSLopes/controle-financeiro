@@ -55,39 +55,51 @@ async function salvar() {
 // Configurações
 // ==========================
 function abrirConfig() {
-  const opcao = prompt("Digite:\n1 - Criar mês\n2 - Ocultar mês");
+  const box = document.getElementById("configBox");
+  box.style.display = box.style.display === "none" ? "block" : "none";
+}
 
-  if (opcao == "1") {
-    const mes = prompt("Mês (1-12)");
-    const ano = prompt("Ano (ex: 2026)");
+// ==========================
+// Criar meses
+// ==========================
+function criarMes() {
+  const mes = parseInt(document.getElementById("configMes").value);
+  const ano = parseInt(document.getElementById("configAno").value);
 
-    fetch(API_URL, {
-      method: "POST",
-      body: JSON.stringify({
-        acao: "criarMes",
-        mes: parseInt(mes),
-        ano: parseInt(ano)
-      })
-    }).then(() => {
-      alert("Mês criado!");
-      carregarMeses();
-    });
+  if (!ano) {
+    alert("Informe o ano");
+    return;
   }
 
-  if (opcao == "2") {
-    const nome = prompt("Nome da aba (ex: Maio/2026)");
+  fetch(API_URL, {
+    method: "POST",
+    body: JSON.stringify({
+      acao: "criarMes",
+      mes: mes,
+      ano: ano
+    })
+  }).then(() => {
+    alert("Mês criado!");
+    carregarMeses();
+  });
+}
 
-    fetch(API_URL, {
-      method: "POST",
-      body: JSON.stringify({
-        acao: "ocultarMes",
-        nomeAba: nome
-      })
-    }).then(() => {
-      alert("Ocultado!");
-      carregarMeses();
-    });
-  }
+// ==========================
+// Ocultar meses
+// ==========================
+function ocultarMes() {
+  const mes = document.getElementById("mes").value;
+
+  fetch(API_URL, {
+    method: "POST",
+    body: JSON.stringify({
+      acao: "ocultarMes",
+      nomeAba: mes
+    })
+  }).then(() => {
+    alert("Mês ocultado!");
+    carregarMeses();
+  });
 }
 
 // ==========================
