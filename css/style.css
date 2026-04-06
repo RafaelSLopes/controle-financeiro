@@ -57,6 +57,10 @@ button {
   gap: 5px;
 }
 
+.radio-item span {
+  white-space: nowrap;
+}
+
 .top-bar {
   display: flex;
   justify-content: space-between;
