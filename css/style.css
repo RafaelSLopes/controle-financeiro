@@ -77,24 +77,23 @@ button {
 }
 
 #toast {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  
   position: fixed;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%) translateY(20px);
-  
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
   background: #323232;
   color: white;
   padding: 12px 20px;
   border-radius: 8px;
-  
-  font-size: 14px;
+
   opacity: 0;
   pointer-events: none;
-  
+
   transition: all 0.3s ease;
   z-index: 9999;
 }
@@ -110,4 +109,24 @@ button {
 
 #toast.error {
   background: #c62828;
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  background: rgba(255, 255, 255, 0.6);
+  
+  opacity: 0;
+  pointer-events: none;
+  
+  transition: opacity 0.3s ease;
+  z-index: 9998;
+}
+
+#overlay.show {
+  opacity: 1;
 }
