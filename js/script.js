@@ -174,6 +174,7 @@ function ocultarMes() {
 
 function mostrarToast(mensagem, tipo = "success") {
   const toast = document.getElementById("toast");
+  const overlay = document.getElementById("overlay");
 
   const icones = {
     success: "✔",
@@ -186,8 +187,11 @@ function mostrarToast(mensagem, tipo = "success") {
   toast.className = "";
   toast.classList.add("show", tipo);
 
+  overlay.classList.add("show");
+
   setTimeout(() => {
     toast.classList.remove("show");
+    overlay.classList.remove("show");
   }, 3000);
 }
 
