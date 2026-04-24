@@ -130,3 +130,12 @@ button {
 #overlay.show {
   opacity: 1;
 }
+
+button {
+  transition: opacity 0.2s ease, transform 0.1s ease;
+}
+
+button:disabled {
+  opacity: 0.5;
+  transform: scale(0.98);
+}
