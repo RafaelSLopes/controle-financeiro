@@ -38,12 +38,6 @@ inputValor.addEventListener("input", (e) => {
 });
 
 // ==========================
-// Desabilitar o botão de salvar antes de carregar o campo
-// ==========================
-const btnSalvar = document.getElementById("btnSalvar");
-btnSalvar.disabled = true;
-
-// ==========================
 // Carregar meses
 // ==========================
 async function carregarMeses() {
@@ -198,6 +192,16 @@ function mostrarToast(mensagem, tipo = "success") {
 }
 
 // ==========================
+// Desabilitar o botão de salvar antes de carregar o campo
+// ==========================
+let btnSalvar = document.getElementById("btnSalvar");
+
+// ==========================
 // Inicialização
 // ==========================
-carregarMeses();
+document.addEventListener("DOMContentLoaded", () => {
+  const btnSalvar = document.getElementById("btnSalvar");
+  btnSalvar.disabled = true;
+
+  carregarMeses();
+});
