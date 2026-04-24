@@ -104,7 +104,7 @@ async function salvar() {
       body: JSON.stringify(dados)
     });
 
-    alert("Salvo com sucesso!");
+    mostrarToast("Salvo com sucesso!", "success");
 
     // 🧹 limpar campos
     document.getElementById("descricao").value = "";
@@ -116,7 +116,7 @@ async function salvar() {
 
   } catch (erro) {
     console.error("Erro:", erro);
-    alert("Erro ao salvar");
+    mostrarToast("Erro ao salvar", "error");
   }
 
   btnSalvar.disabled = false; // ✅ reativa só no final
@@ -139,7 +139,7 @@ function criarMes() {
   const ano = parseInt(document.getElementById("configAno").value);
 
   if (!ano) {
-    alert("Informe o ano");
+    mostrarToast("Informe o ano", "error");
     return;
   }
 
@@ -151,7 +151,7 @@ function criarMes() {
       ano: ano
     })
   }).then(() => {
-    alert("Mês criado!");
+    mostrarToast("Mês criado!", "success");
     carregarMeses();
   });
 }
@@ -169,9 +169,32 @@ function ocultarMes() {
       nomeAba: mes
     })
   }).then(() => {
-    alert("Mês ocultado!");
+    mostrarToast("Mês ocultado!", "success");
     carregarMeses();
   });
+}
+
+// ==========================
+// Alerta de salvamento
+// ==========================
+
+function mostrarToast(mensagem, tipo = "success") {
+  const toast = document.getElementById("toast");
+
+  const icones = {
+    success: "✔",
+    error: "❌"
+  };
+
+  const icone = icones[tipo] || "";
+
+  toast.innerHTML = `${icone} ${mensagem}`;
+  toast.className = "";
+  toast.classList.add("show", tipo);
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 3000);
 }
 
 // ==========================
